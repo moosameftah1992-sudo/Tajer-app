@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --tj-primary: #0f172a;
+  --tj-accent: #10b981;
+  --tj-bg: #f8fafc;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: "Inter", "Cairo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+html[lang="ar"] body { font-family: "Cairo", "Tajawal", "Inter", ui-sans-serif, system-ui, sans-serif; }
+
+@utility btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed;
+}
+@utility switch {
+  @apply relative inline-flex h-6 w-11 shrink-0 cursor-pointer items-center rounded-full border-2 border-transparent transition;
+}
+
+@layer components {
+  .btn-accent { @apply btn bg-emerald-500 text-white hover:bg-emerald-600 shadow-sm; }
+  .btn-primary { @apply btn bg-slate-900 text-white hover:bg-slate-800; }
+  .btn-outline { @apply btn border border-slate-300 bg-white text-slate-800 hover:bg-slate-50; }
+  .btn-danger { @apply btn bg-rose-600 text-white hover:bg-rose-700; }
+  .btn-ghost { @apply btn text-slate-600 hover:bg-slate-100; }
+  .input { @apply w-full rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-emerald-500 focus:ring-2 focus:ring-emerald-100 disabled:bg-slate-50; }
+  .label { @apply mb-1 block text-xs font-semibold uppercase tracking-wide text-slate-500; }
+  .card { @apply rounded-2xl border border-slate-200 bg-white p-5 shadow-sm; }
+  .badge { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold; }
+  .table { @apply w-full text-sm; }
+  .table th { @apply bg-slate-50 px-3 py-2 text-start text-xs font-semibold uppercase tracking-wide text-slate-500; }
+  .table td { @apply border-t border-slate-100 px-3 py-2 align-middle; }
+}
+
+/* Storefront theme engine */
+.sf { background: var(--sf-bg); color: var(--sf-text); font-family: var(--sf-font); font-size: calc(1rem * var(--sf-scale)); min-height: 100vh; }
+.sf-surface { background: var(--sf-surface); border: 1px solid var(--sf-border); border-radius: var(--sf-radius); }
+.sf-btn { background: var(--sf-primary); color: var(--sf-primary-fg); border-radius: var(--sf-radius); padding: .6em 1.2em; font-weight: 600; display: inline-flex; align-items: center; gap: .5em; transition: filter .15s; }
+.sf-btn:hover { filter: brightness(1.08); }
+.sf-btn-outline { border: 1.5px solid var(--sf-primary); color: var(--sf-primary); border-radius: var(--sf-radius); padding: .6em 1.2em; font-weight: 600; display: inline-flex; align-items: center; gap: .5em; }
+.sf-muted { color: var(--sf-muted); }
+.sf-primary { color: var(--sf-primary); }
+.sf-chip { border-radius: 999px; padding: .35em .9em; border: 1px solid var(--sf-border); background: var(--sf-surface); font-size: .85em; }
+.sf-chip.active { background: var(--sf-primary); color: var(--sf-primary-fg); border-color: var(--sf-primary); }
+.sf-input { width: 100%; border: 1px solid var(--sf-border); background: var(--sf-surface); color: var(--sf-text); border-radius: var(--sf-radius); padding: .6em .9em; outline: none; }
+.sf-input:focus { border-color: var(--sf-primary); }
+.sf-radius { border-radius: var(--sf-radius); }
+.sf-decor-dots { background-image: radial-gradient(color-mix(in srgb, var(--sf-primary) 18%, transparent) 1.5px, transparent 1.5px); background-size: 22px 22px; }
+.sf-decor-lines { background-image: repeating-linear-gradient(135deg, transparent 0 14px, color-mix(in srgb, var(--sf-primary) 8%, transparent) 14px 15px); }
+.sf-decor-gradient { background-image: radial-gradient(60% 80% at 80% 0%, color-mix(in srgb, var(--sf-primary) 30%, transparent), transparent 70%), radial-gradient(50% 60% at 0% 100%, color-mix(in srgb, var(--sf-secondary) 25%, transparent), transparent 70%); }
+
+@media print {
+  .no-print { display: none !important; }
+  .print-only { display: block !important; }
+  body { background: #fff; }
+}
+.print-only { display: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
